@@ -4,7 +4,6 @@
 #include <sstream>
 #include <unordered_map>
 #include <bits/stdc++.h>
-#include <bits/stdc++.h>
 
 struct hash_pair {
   template <class T1, class T2>
