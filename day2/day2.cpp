@@ -27,7 +27,7 @@ int day2part2() {
   // Space complexity: O(1)
   std::ifstream infile("./input.txt");
   std::string line;
-  
+
   std::unordered_map<std::pair<char, char>, int, hash_pair> win_rounds = {
   {{'A', 'X'}, 0 + 3},
   {{'A', 'Y'}, 3 + 1},
@@ -60,7 +60,7 @@ int day2part1() {
   // Space complexity: O(1)
   std::ifstream infile("./input.txt");
   std::string line;
-  
+
   std::unordered_map<char, int> shape_points = {{'X', 1}, {'Y', 2}, {'Z', 3}};
   std::unordered_map<std::pair<char, char>, int, hash_pair> win_rounds = {
   {{'A', 'X'}, 3},
