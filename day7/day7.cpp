@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <cstddef>
+#include <new>
 
 #define LIMIT 100000
 #define TOTAL_DISK_SPACE 70000000
@@ -19,6 +20,9 @@ public:
     long long size = 0;
     FileHandler* parent;
 
+    ~FileHandler() {
+        delete parent;
+    }
     FileHandler(std::string &name, long long size) : name{name}, size(size) {}
 
     virtual void print(uint) = 0;
@@ -28,6 +32,8 @@ class File : public FileHandler {
 public:
 
     using FileHandler::FileHandler;
+
+    ~File() = default;
 
     void print(uint level = 0) override {
         for (int i = 0; i < level; ++i) std::cout << " ";
@@ -40,10 +46,18 @@ public:
     std::vector<Dir*> dirs;
     std::vector<File*> files;
 
+    ~Dir() {
+        for (int i = 0; i < dirs.size(); ++i) {
+            delete dirs[i];
+        }
+        for (int i = 0; i < files.size(); ++i) {
+            delete files[i];
+        }
+    }
+
     Dir(std::string &name) : FileHandler(name, 0) {}
     Dir(std::string &&name) : FileHandler(name, 0) {}
 
-    // TODO: destructors
 
     void print(uint level = 0) override {
         for (int i = 0; i < level; ++i) std::cout << " ";
